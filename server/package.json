@@ -1,0 +1,11 @@
+{
+  "name": "platformer-server",
+  "version": "1.0.0",
+  "description": "This is the server-side of the platformer game, and will handle connections from the client side for multiplayer data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Deven, Dorian, Joseph",
+  "license": "ISC"
+}
