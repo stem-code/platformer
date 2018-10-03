@@ -1,0 +1,13 @@
+#version 300 es
+
+in vec3 coordinate;
+
+out vec3 textureCoord;
+
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+
+void main() {
+    gl_Position = projectionMatrix * viewMatrix * vec4(coordinate, 1.0);
+    textureCoord = coordinate;
+}

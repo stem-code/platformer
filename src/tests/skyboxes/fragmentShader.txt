@@ -1,0 +1,26 @@
+#version 300 es
+
+precision mediump float;
+
+in vec3 textureCoord;
+
+out vec4 fragColor;
+
+uniform samplerCube cubeMap;
+uniform samplerCube fadeCubeMap;
+uniform float blendFactor;
+uniform vec3 fogColor;
+
+const float upperLimit = 30.0;
+const float lowerLimit = 0.0;
+
+void main() {
+    vec4 cubeMapTexture = texture(cubeMap, textureCoord);
+    vec4 fadeCubeMapTexture = texture(fadeCubeMap, textureCoord);
+    vec4 finalColor = mix(cubeMapTexture, fadeCubeMapTexture, blendFactor);
+
+    float factor = (textureCoord.y - lowerLimit) / (upperLimit - lowerLimit);
+    factor = clamp(factor, 0.0, 1.0);
+
+    fragColor = mix(vec4(fogColor, 1.0), finalColor, factor);
+}
